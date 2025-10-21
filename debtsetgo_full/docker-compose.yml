@@ -1,0 +1,33 @@
+
+services:
+  mysql:
+    image: mysql:8.0.43
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: debtsetgo
+      MYSQL_USER: debtuser
+      MYSQL_PASSWORD: debtpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_init.sql:/docker-entrypoint-initdb.d/mysql_init.sql
+
+  server:
+    build: ./server
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: debtuser
+      MYSQL_PASSWORD: debtpass
+      MYSQL_DB: debtsetgo
+      PORT: 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+
+  web:
+    build: ./web
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server
