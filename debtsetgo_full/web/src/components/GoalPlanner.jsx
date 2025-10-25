@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createGoal, getGoal } from "../api";
 
-export default function GoalPlanner() {
+export default function GoalPlanner({ userId }) {
   const [goalId, setGoalId] = useState(null);
   const [goal, setGoal] = useState(null);
   const [name, setName] = useState("Emergency Fund");
@@ -9,7 +9,8 @@ export default function GoalPlanner() {
   const [date, setDate] = useState("2025-12-31");
 
   async function handleCreate() {
-    const data = await createGoal({ userId: 1, name, targetAmount: Number(amount), targetDate: date });
+   // const data = await createGoal({ userId: 1, name, targetAmount: Number(amount), targetDate: date });
+    const data = await createGoal({ userId, name, targetAmount: Number(amount), targetDate: date });
     setGoalId(data.goalId);
     const g = await getGoal(data.goalId);
     setGoal(g);
@@ -17,7 +18,7 @@ export default function GoalPlanner() {
 
   return (
     <div className="card">
-      <h2>AI Goal Planner</h2>
+      <h2 style={{ marginTop: 0 }}>AI Goal Planner</h2>
       <div className="row">
         <input value={name} onChange={e => setName(e.target.value)} />
         <input type="number" value={amount} onChange={e => setAmount(e.target.value)} />

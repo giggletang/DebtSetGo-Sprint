@@ -1,4 +1,4 @@
-body { font-family: system-ui, Arial, sans-serif; background:#f9fafb; }
+/* body { font-family: system-ui, Arial, sans-serif; background:#f9fafb; }
 .container { max-width:1100px; margin:20px auto; padding:0 12px; }
 .grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
 .card { background:#fff; padding:16px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
@@ -6,4 +6,130 @@ body { font-family: system-ui, Arial, sans-serif; background:#f9fafb; }
 input, button { padding:8px; border:1px solid #ccc; border-radius:6px; }
 button { cursor:pointer; background:#3b82f6; color:white; }
 .panel { background:#f3f4f6; padding:10px; border-radius:8px; }
-@media (max-width: 800px){ .grid { grid-template-columns: 1fr; } }
+@media (max-width: 800px){ .grid { grid-template-columns: 1fr; } } */
+
+/* ----- Global Layout ----- */
+body {
+    margin: 0;
+    font-family: "Inter", Arial, sans-serif;
+    background: #f5f8fa;
+    color: #1e2a38;
+  }
+  
+  .container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 24px;
+  }
+  
+  /* ----- Header Banner ----- */
+  header {
+    background: linear-gradient(to right, #1d4ed8, #3b82f6);
+    color: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, .08);
+  }
+  header h1 {
+    margin: 0;
+  }
+  
+  /* ----- Grid Layout for Cards ----- */
+  .grid {
+    display: grid;
+    gap: 24px;
+  }
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* ----- Card Styling ----- */
+  .card {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.05);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 22px rgba(0,0,0,.08);
+  }
+  
+  /* ----- Form Inputs & Button ----- */
+  input {
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    width: 100%;
+  }
+  input:focus {
+    outline: 2px solid #3b82f6;
+    border-color: transparent;
+  }
+  
+  button {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 12px;
+    transition: background .2s;
+  }
+  button:hover {
+    background: #1d4ed8;
+  }
+  
+  /* ----- Panels inside Cards ----- */
+  .panel {
+    background: #eff6ff;
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 16px;
+  }
+  
+  ul {
+    padding-left: 20px;
+  }
+
+  /* ===== Auth Page Styling ===== */
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* fully center vertically */
+    padding: 16px;
+  }
+  
+  .auth-card {
+    width: 100%;
+    max-width: 420px; /* smaller box */
+    background: #ffffff;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.08);
+    text-align: center;
+  }
+  
+  .auth-card h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #1e293b;
+  }
+  
+  .auth-card input {
+    margin-bottom: 12px;
+  }
+  
+  .auth-card button {
+    margin-top: 10px;
+  }
+  
+  
