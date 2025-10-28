@@ -1,7 +1,7 @@
 # DebtSetGo-Sprint
 DebtSetGo – Personal Financer
 
-Software Engineering Project (Sprint 2)
+Software Engineering Project
 Group 9 – Fall 2025
 
  Project Overview
@@ -13,11 +13,11 @@ The system uses smart analytics and automation to help users build financial lit
 
 AI Goal Planner – Personalized saving and investment goals.
 
+Budget Analytics – Auto-categorizes expenses and visualizes progress.
+
 AI Credit Coach – Credit-building recommendations.
 
 AI Mistake Learner – Detects repeated financial errors.
-
-Budget Analytics – Auto-categorizes expenses and visualizes progress.
 
 State Tax Advisor – Offers localized tax tips and refund estimates.
 
