@@ -9,6 +9,7 @@ export const getGoal = (id) => API.get(`/goals/${id}`).then(r => r.data);
 // Budget
 export const addExpense = (data) => API.post("/budget/expense", data).then(r => r.data);
 export const getSuggestions = (id) => API.get(`/budget/${id}/suggestions`).then(r => r.data);
+export const getTransactions = (budgetId) => API.get(`/budget/${budgetId}/transactions`).then(r => r.data);
 
 // register and login
 

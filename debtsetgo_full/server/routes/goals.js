@@ -26,8 +26,8 @@ router.post("/", async (req, res) => {
     // Create 3 default steps
     const steps = [
       ["Open savings account", new Date(Date.now() + 3 * 86400000)],
-      ["Automate transfers", new Date(Date.now() + 7 * 86400000)],
-      ["Review progress", new Date(Date.now() + 30 * 86400000)]
+      ["Automate transfers  ", new Date(Date.now() + 7 * 86400000)],
+      ["Review progress    ", new Date(Date.now() + 30 * 86400000)]
     ];
     for (const [desc, date] of steps) {
       await db.execute(

@@ -1093,3 +1093,234 @@ html, body {
   padding: 8px 16px;
   border-radius: 999px;
 }
+
+/* Budget Tracker Specific Styles */
+.budget-summary {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  border-left: 4px solid #2563eb;
+}
+
+.budget-summary p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.transactions-table {
+  margin: 20px 0;
+}
+
+.transactions-table h3 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.transactions-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+}
+
+.transactions-table th,
+.transactions-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.transactions-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #ddd;
+}
+
+.transactions-table tr:hover {
+  background: #f8f9fa;
+}
+
+.transactions-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Input group styling for budget form */
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.input-group input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 120px;
+  font-size: 14px;
+}
+
+.input-group input:focus {
+  outline: 2px solid #3b82f6;
+  border-color: transparent;
+}
+
+.input-group button {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  width: auto;
+  min-width: 120px;
+  margin-top: 0;
+  transition: background .2s;
+}
+
+.input-group button:hover {
+  background: #1d4ed8;
+}
+
+/* Responsive design for transactions table */
+@media (max-width: 600px) {
+  .transactions-table table {
+    font-size: 14px;
+  }
+  
+  .transactions-table th,
+  .transactions-table td {
+    padding: 8px 10px;
+  }
+  
+  .input-group {
+    flex-direction: column;
+  }
+  
+  .input-group input {
+    min-width: auto;
+  }
+}
+.input-group button {
+  width: auto !important; /* Override the global button width */
+  margin-top: 0 !important; /* Remove the global margin-top */
+  min-width: 120px; /* Ensure reasonable minimum width */
+}
+
+/* Ensure input-group layout works properly */
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: stretch; /* Make sure inputs and buttons align properly */
+}
+
+.input-group input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 120px;
+  font-size: 14px;
+  margin-top: 0; /* Remove any default margins */
+}
+
+/* Make sure the transactions table is clearly visible */
+.transactions-table {
+  margin: 20px 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.transactions-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  margin: 0;
+}
+
+.transactions-table th {
+  background: #f8fafc;
+  font-weight: 600;
+  padding: 12px 16px;
+  border-bottom: 2px solid #e5e7eb;
+  color: #374151;
+}
+
+.transactions-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.transactions-table tr:last-child td {
+  border-bottom: none;
+}
+
+.transactions-table tr:hover {
+  background: #f9fafb;
+}
+
+/* Budget summary styling */
+.budget-summary {
+  margin: 20px 0;
+  padding: 16px;
+  background: #eff6ff;
+  border-radius: 12px;
+  border-left: 4px solid #2563eb;
+}
+
+.budget-summary p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e40af;
+}
+
+/* Panel styling for suggestions */
+.panel {
+  background: #f0f9ff;
+  padding: 16px;
+  border-radius: 12px;
+  border-left: 4px solid #0ea5e9;
+  margin-top: 20px;
+}
+
+.panel h3 {
+  margin-top: 0;
+  color: #0369a1;
+}
+
+.panel ul {
+  margin-bottom: 0;
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+  .input-group {
+    flex-direction: column;
+  }
+  
+  .input-group input,
+  .input-group button {
+    width: 100% !important; /* On mobile, they can be full width */
+    min-width: auto;
+  }
+  
+  .transactions-table {
+    font-size: 14px;
+  }
+  
+  .transactions-table th,
+  .transactions-table td {
+    padding: 8px 12px;
+  }
+}
