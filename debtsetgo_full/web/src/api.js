@@ -29,3 +29,41 @@ export const register = async (data) => {
     });
     return res.json();
   };
+
+  // Profile
+export const getProfile = (userId) =>
+  API.get(`/profile/${userId}`).then((r) => r.data);
+
+export const updateProfile = (userId, data) =>
+  API.put(`/profile/${userId}`, data).then((r) => r.data);
+
+export const estimateStateTax = (payload) =>
+  API.post("/tax/estimate", payload).then((r) => r.data);
+
+export const recommendInvestments = (payload) =>
+  API.post("/investments/recommend", payload).then((r) => r.data);
+
+export const getLibraryTopics = () =>
+  API.get("/library").then((r) => r.data);
+
+export const getLibraryArticle = (id) =>
+  API.get(`/library/${id}`).then((r) => r.data);
+
+export const getCreditCoachingPlan = (payload) =>
+  API.post("/credit/coach", payload).then((r) => r.data);
+
+export const getForumMessages = () =>
+  API.get("/forum/messages").then((r) => r.data);
+
+export const sendForumMessage = (payload) =>
+  API.post("/forum/messages", payload).then((r) => r.data);
+
+export const compareWhatIf = (payload) =>
+  API.post("/whatif/compare", payload).then((r) => r.data);
+
+export const getMembershipStatus = (userId) =>
+  API.get(`/membership/status/${userId}`).then((r) => r.data);
+
+export const purchaseMembership = (payload) =>
+  API.post("/membership/purchase", payload).then((r) => r.data);
+

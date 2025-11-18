@@ -6,20 +6,29 @@ CREATE DATABASE IF NOT EXISTS debtsetgo CHARACTER SET utf8mb4 COLLATE utf8mb4_ge
 USE debtsetgo;
 
 -- ===========================================================
--- USERS & PROFILE (User Management + Achievement Engine)
+-- USERS & PROFILE (User Management + Membership + Tax/What-if helpers)
 -- ===========================================================
 CREATE TABLE IF NOT EXISTS users (
-    user_id       INT AUTO_INCREMENT PRIMARY KEY,
-    email         VARCHAR(100) NOT NULL UNIQUE,
-    full_name     VARCHAR(100) NOT NULL,
-    created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    user_id         INT AUTO_INCREMENT PRIMARY KEY,
+    email           VARCHAR(100) NOT NULL UNIQUE,
+    full_name       VARCHAR(100) NOT NULL,
+    -- used by auth.js (password_hash)
+    password_hash   VARCHAR(255) NULL,
+    -- used by membership.js
+    is_member       TINYINT(1) NOT NULL DEFAULT 0,
+    membership_plan VARCHAR(50) DEFAULT NULL,
+    created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS profiles (
-    profile_id    INT AUTO_INCREMENT PRIMARY KEY,
-    user_id       INT NOT NULL UNIQUE,
-    state         VARCHAR(50),
-    income_monthly DECIMAL(10,2) DEFAULT 0.00,
+    profile_id        INT AUTO_INCREMENT PRIMARY KEY,
+    user_id           INT NOT NULL UNIQUE,
+    -- used by profile.js
+    age               INT NULL,
+    address           VARCHAR(255) NULL,
+    state             VARCHAR(50),
+    -- used by tax.js, investments.js, whatif.js, credit.js
+    income_monthly    DECIMAL(10,2) DEFAULT 0.00,
     credit_card_owned BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
         ON DELETE CASCADE ON UPDATE CASCADE
@@ -72,6 +81,7 @@ CREATE TABLE IF NOT EXISTS budgets (
     created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
         ON DELETE CASCADE,
+    -- used by budget.js: one budget per user per month/year
     UNIQUE KEY unique_budget_per_month (user_id, month, year)
 ) ENGINE=InnoDB;
 
@@ -95,9 +105,23 @@ CREATE TABLE IF NOT EXISTS smart_suggestions (
 ) ENGINE=InnoDB;
 
 -- ===========================================================
+-- COMMUNITY FORUM (forum.js)
+-- ===========================================================
+CREATE TABLE IF NOT EXISTS forum_messages (
+    id          INT AUTO_INCREMENT PRIMARY KEY,
+    user_id     INT NOT NULL,
+    content     TEXT NOT NULL,
+    created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+-- ===========================================================
 -- INDEXES
 -- ===========================================================
-CREATE INDEX idx_user_email ON users(email);
-CREATE INDEX idx_goal_user ON goals(user_id);
-CREATE INDEX idx_budget_user ON budgets(user_id);
-CREATE INDEX idx_txn_budget ON transactions(budget_id);
+CREATE INDEX idx_user_email     ON users(email);
+CREATE INDEX idx_goal_user      ON goals(user_id);
+CREATE INDEX idx_budget_user    ON budgets(user_id);
+CREATE INDEX idx_txn_budget     ON transactions(budget_id);
+CREATE INDEX idx_profile_user   ON profiles(user_id);
+CREATE INDEX idx_forum_user     ON forum_messages(user_id);
