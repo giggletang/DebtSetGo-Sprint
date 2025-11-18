@@ -1,6 +1,9 @@
 # DebtSetGo – Full-Stack Personal Finance Platform  
 React + Node.js (Express) + MySQL + Docker
 
+Deployed on AWS:
+http://ec2-18-191-203-221.us-east-2.compute.amazonaws.com/
+
 A modern financial planning and budgeting platform that helps users track expenses, create goals, manage monthly budgets, and receive smart financial suggestions. Includes membership features, AI-driven future modules, tax helper, credit analysis, investment advice, scenario simulation, and a community forum.
 ---
 
