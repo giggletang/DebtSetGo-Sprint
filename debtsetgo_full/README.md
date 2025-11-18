@@ -1,6 +1,9 @@
 # DebtSetGo – Full-Stack Personal Finance Platform  
 React + Node.js (Express) + MySQL + Docker
 
+Deployed on AWS:
+http://ec2-18-217-102-123.us-east-2.compute.amazonaws.com/
+
 # 🚀 Quick Start with Docker
 Run the full stack (frontend + backend + MySQL) with one command:
 
