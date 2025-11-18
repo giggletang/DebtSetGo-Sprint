@@ -9,16 +9,17 @@ Group 9 – Fall 2025
 DebtSetGo is an AI-powered personal finance platform built to help college students manage credit, savings, investments, and taxes — all in one place.
 The system uses smart analytics and automation to help users build financial literacy and avoid costly mistakes.
 
- Key Features
+Features include:
 
-AI Goal Planner – Personalized saving and investment goals.
-
-Budget Analytics – Auto-categorizes expenses and visualizes progress.
-
-AI Credit Coach – Credit-building recommendations.
-
-AI Mistake Learner – Detects repeated financial errors.
-
-State Tax Advisor – Offers localized tax tips and refund estimates.
-
-Admin Dashboard + Peer Forum – Community moderation and insights.
+User Management – Handles login, signup, and profile personalization.
+DebtSetGo Core Dashboard - Display all the features and functions.
+Membership - Unlock premium features by different types of membership.
+AI Goal Planner - Generates step-by-step financial roadmaps.
+Budget Tracker - Tracks income, expenses, and bills.
+AI Credit Coach - Provides credit-building tips and reminders.
+State-Wise Tax Advisor - Offers state-specific tax rules and refund estimates.
+Investment Recommender - Suggests safe, student-friendly investment options.
+What-If Simulator - Compares scenarios like saving vs. investing.
+AI Mistake-Learner - Learns user patterns and prevents repeat mistakes.
+Educational Library - Provides simple guides on financial topics.
+Peer Forum - Community space with moderation.
