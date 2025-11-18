@@ -8,7 +8,7 @@ services:
       MYSQL_DATABASE: debtsetgo
       MYSQL_USER: debtuser
       MYSQL_PASSWORD: debtpass
-    # ⚠ 生产环境不建议暴露3306到公网，所以这里去掉 ports
+   
     ports:
         - "3306:3306"
     volumes:
