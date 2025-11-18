@@ -12,14 +12,25 @@ The system uses smart analytics and automation to help users build financial lit
 Features include:
 
 User Management – Handles login, signup, and profile personalization.
+
 DebtSetGo Core Dashboard - Display all the features and functions.
+
 Membership - Unlock premium features by different types of membership.
+
 AI Goal Planner - Generates step-by-step financial roadmaps.
+
 Budget Tracker - Tracks income, expenses, and bills.
+
 AI Credit Coach - Provides credit-building tips and reminders.
+
 State-Wise Tax Advisor - Offers state-specific tax rules and refund estimates.
+
 Investment Recommender - Suggests safe, student-friendly investment options.
+
 What-If Simulator - Compares scenarios like saving vs. investing.
+
 AI Mistake-Learner - Learns user patterns and prevents repeat mistakes.
+
 Educational Library - Provides simple guides on financial topics.
+
 Peer Forum - Community space with moderation.
