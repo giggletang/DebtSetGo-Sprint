@@ -9,6 +9,9 @@ Group 9 – Fall 2025
 DebtSetGo is an AI-powered personal finance platform built to help college students manage credit, savings, investments, and taxes — all in one place.
 The system uses smart analytics and automation to help users build financial literacy and avoid costly mistakes.
 
+Deployed on AWS:
+http://ec2-18-191-203-221.us-east-2.compute.amazonaws.com/
+
 Features include:
 
 User Management – Handles login, signup, and profile personalization.
