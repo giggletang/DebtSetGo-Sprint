@@ -8,8 +8,12 @@ import {
 } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import GoalPlanner from "./components/GoalPlanner";
-import BudgetTracker from "./components/BudgetTracker";
+import Landing from "./components/Landing";
+import Navbar from "./components/Navbar";
+import DashboardOverview from "./components/DashboardOverview";
+import TransactionsPage from "./components/TransactionsPage";
+import GoalsPage from "./components/GoalsPage";
+import AIToolsPage from "./components/AIToolsPage";
 import Profile from "./components/Profile";
 import EditProfile from "./components/EditProfile";
 import TaxAdvisor from "./components/TaxAdvisor";
@@ -21,196 +25,22 @@ import WhatIfSimulator from "./components/WhatIfSimulator";
 import AIMistakeLearner from "./components/AIMistakeLearner";
 import MembershipPlans from "./components/MembershipPlans";
 import MembershipCheckout from "./components/MembershipCheckout";
-import { getMembershipStatus } from "./api";
 
 import "./styles.css";
 
 /* 顶栏 + 布局（登录后页面通用外壳） */
 function AppLayout({ userId, userName, onLogout, children }) {
   return (
-    <div className="app-shell">
-      <div className="topbar">
-        <div className="topbar-left">
-          <Link to="/app" className="topbar-logo">
-            DebtSetGo
-          </Link>
-        </div>
-
-        <div className="topbar-right">
-          <Link to="/profile" className="topbar-username">
-            {userName || "Profile"}
-          </Link>
-          <button className="topbar-logout" onClick={onLogout}>
-            Logout
-          </button>
-        </div>
-      </div>
-
-      <div className="container">{children}</div>
+    <div className="bg-slate-50 min-h-screen">
+      <Navbar userName={userName} onLogout={onLogout} />
+      <div className="max-w-6xl mx-auto px-4 py-6">{children}</div>
     </div>
   );
 }
 
-/* 登录后的主界面：Dashboard */
-function Dashboard({ userId, userName, navigate }) {
-  const [isMember, setIsMember] = useState(false);
-  const [membershipPlan, setMembershipPlan] = useState(null);
-
-  useEffect(() => {
-    if (!userId) return;
-
-    getMembershipStatus(userId)
-      .then((res) => {
-        setIsMember(res.isMember);
-        setMembershipPlan(res.membershipPlan);
-      })
-      .catch((err) => {
-        console.error("Failed to load membership status", err);
-      });
-  }, [userId]);
-
-  return (
-    <>
-      {/* 顶部大蓝条：左文字 + 右侧根据会员状态切换 */}
-      <header className="hero-header hero-header-row">
-        <div className="hero-text">
-          <h1>DebtSetGo</h1>
-          <p>Plan Goals. Track Spending. Grow Financial Freedom.</p>
-        </div>
-
-        {!isMember ? (
-          // 非会员：显示 Join Membership 按钮
-          <button
-            className="hero-membership-btn"
-            onClick={() => navigate("/membership")}
-          >
-            Join Membership
-          </button>
-        ) : (
-          // 已是会员：显示欢迎文字（带用户名）
-          <div className="membership-welcome">
-            Welcome valued member, <strong>{userName}</strong>!
-          </div>
-        )}
-      </header>
-
-    
-      <h2 className="section-title">Core Tools</h2>
-
-      {/* 已经实现的两个核心工具：AI Goal Planner + Budget Tracker */}
-      <div className="grid dashboard-core-grid">
-        <GoalPlanner userId={userId} />
-        <BudgetTracker userId={userId} />
-      </div>
-
-      {/* 其它功能模块：作为板块卡片展示 + 跳转按钮 */}
-      <section className="feature-section">
-        <h2 className="section-title">Explore More Tools</h2>
-        <p className="section-subtitle">
-          Access AI-powered credit coaching, tax advice, investment suggestions,
-          simulations, and more.
-        </p>
-
-        <div className="feature-grid">
-          <div className="feature-card">
-            <h3>AI Credit Coach</h3>
-            <p>
-              Get personalized tips and reminders to build a strong credit
-              history.
-            </p>
-            <button
-              className="feature-btn"
-              onClick={() => navigate("/credit-coach")}
-            >
-              Open
-            </button>
-          </div>
-
-          <div className="feature-card">
-            <h3>State-Wise Tax Advisor</h3>
-            <p>Understand your state-specific tax rules and estimate refunds.</p>
-            <button
-              className="feature-btn"
-              onClick={() => navigate("/tax-advisor")}
-            >
-              Open
-            </button>
-          </div>
-
-          <div className="feature-card">
-            <h3>Investment Recommender</h3>
-            <p>
-              Discover safe, student-friendly investment options tailored to
-              you.
-            </p>
-            <button
-              className="feature-btn"
-              onClick={() => navigate("/investments")}
-            >
-              Open
-            </button>
-          </div>
-
-          <div className="feature-card">
-            <h3>What-If Simulator</h3>
-            <p>
-              Compare scenarios like saving vs. investing and see long-term
-              impact.
-            </p>
-            <button
-              className="feature-btn"
-              onClick={() => navigate("/what-if")}
-            >
-              Open
-            </button>
-          </div>
-
-          <div className="feature-card">
-            <h3>AI Mistake-Learner</h3>
-            <p>
-              Spot patterns in your behavior and prevent repeat financial
-              mistakes.
-            </p>
-            <button
-              className="feature-btn"
-              onClick={() => navigate("/ai-mistakes")}
-            >
-              Open
-            </button>
-          </div>
-
-          <div className="feature-card">
-            <h3>Educational Library</h3>
-            <p>
-              Learn the basics of credit, taxes, saving, and investing in plain
-              English.
-            </p>
-            <button
-              className="feature-btn"
-              onClick={() => navigate("/library")}
-            >
-              Open
-            </button>
-          </div>
-
-          <div className="feature-card">
-            <h3>Peer Forum &amp; Admin Dashboard</h3>
-            <p>
-              Ask questions, share wins, and get moderated community support.
-            </p>
-            <button
-              className="feature-btn"
-              onClick={() => navigate("/forum")}
-            >
-              Open
-            </button>
-          </div>
-
-          {/* 主页上已按需求移除 Smart Payment Suggestions 模块 */}
-        </div>
-      </section>
-    </>
-  );
+/* Dashboard component - now using DashboardOverview */
+function Dashboard({ userId, userName }) {
+  return <DashboardOverview userId={userId} userName={userName} />;
 }
 
 /* 一些占位组件（保留） */
@@ -330,12 +160,13 @@ export default function App() {
     navigate("/");
   };
 
-  /* 未登录：只允许访问登录 / 注册 */
+  /* 未登录：允许访问登录 / 注册 / 首页 */
   if (!userId) {
     return (
       <Routes>
+        <Route path="/" element={<Landing />} />
         <Route
-          path="/"
+          path="/login"
           element={
             <Login setUserId={setUserId} setUserName={setUserName} />
           }
@@ -351,6 +182,7 @@ export default function App() {
     <Routes>
       {/* 默认 / 重定向到 /app */}
       <Route path="/" element={<Navigate to="/app" replace />} />
+      <Route path="/login" element={<Navigate to="/app" replace />} />
 
       <Route
         path="/app"
@@ -365,6 +197,45 @@ export default function App() {
               userName={userName}
               navigate={navigate}
             />
+          </AppLayout>
+        }
+      />
+
+      <Route
+        path="/goals"
+        element={
+          <AppLayout
+            userId={userId}
+            userName={userName}
+            onLogout={handleLogout}
+          >
+            <GoalsPage userId={userId} />
+          </AppLayout>
+        }
+      />
+
+      <Route
+        path="/transactions"
+        element={
+          <AppLayout
+            userId={userId}
+            userName={userName}
+            onLogout={handleLogout}
+          >
+            <TransactionsPage userId={userId} />
+          </AppLayout>
+        }
+      />
+
+      <Route
+        path="/ai-tools"
+        element={
+          <AppLayout
+            userId={userId}
+            userName={userName}
+            onLogout={handleLogout}
+          >
+            <AIToolsPage />
           </AppLayout>
         }
       />
